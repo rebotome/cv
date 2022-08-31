@@ -17,13 +17,39 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    <link rel="alternate" hreflang="en" href="https://reboto.me/en/index.html" />
+    <link rel="alternate" hreflang="be" href="https://reboto.me/be/index.html" />
+    <link rel="alternate" hreflang="ru" href="https://reboto.me/ru/index.html" />
+
     <link rel="stylesheet" href="css/normalize.css" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/main.css" type="text/css">
 
-    <script src="js/modernizr.custom.js"></script>
+    <script src="/js/modernizr.custom.js"></script>
+    <script> (() => {
+      if (localStorage.getItem('isFirstVisit') === 'false') {
+          return
+      }
+      localStorage.setItem('isFirstVisit', 'false')
+      const getUserLanguage = () => {
+          const userLanguage = navigator.language.toLowerCase().split('-')[0]
+          if (['by', 'ua', 'ru'].includes(userLanguage)) {
+              return 'ru'
+          }
+          return 'en'
+      }
+      const userLanguage = getUserLanguage()
+      const pageLanguage = document.documentElement.lang
+      if (userLanguage !== pageLanguage) {
+          if (userLanguage === 'ru') {
+              window.location.replace('/ru')
+          } else {
+              window.location.replace('/')
+          }
+      }
+  })()</script>
   </head>
 
   <body class="page">
@@ -102,16 +128,16 @@
                   <a href="contact.html">Кантакт</a>
                 </li>
                 <li class="menu-item menu-item-has-children current-menu-item">
-                  <a href="index-2.html">Беларуская</a>
+                  <a href="index.html">Беларуская</a>
                   <ul class="sub-menu">
                     <li class="menu-item">
-                      <a href="index.html">Англiйская</a>
+                      <a href="/en/index.html">Англiйская</a>
                     </li>
                     <li class="menu-item current-menu-item">
-                      <a href="index-2.html">Беларуская</a>
+                      <a href="index.html">Беларуская</a>
                     </li>
                     <li class="menu-item">
-                      <a href="index-3.html">Руская</a>
+                      <a href="/ru/index.html">Руская</a>
                     </li>
                   </ul>
                 </li>
@@ -254,21 +280,22 @@
                         <!-- Testimonial Content -->
                         <div class="testimonial-content">
                           <!-- Picture -->
-                          <div class="testimonial-picture">
-                            <img src="./img/testimonials/testimonial-1.jpg" alt="Billy Adams"/>
-                          </div>
+                          <!-- <div class="testimonial-picture">
+                            <img src="./img/testimonials/testimonial-1.png" alt="Cicero"/>
+                          </div> -->
                           <!-- /Picture -->
 
                           <!-- Testimonial Text -->
                           <div class="testimonial-text">
-                             <p>Donec eu est vel metus consequat volutpat. Nunc aliquet euismod mauris, a feugiat urna ullamcorper non.</p>
+                             <p>The heart of the discerning acquires knowledge, <br>
+                              for the ears of the wise seek it out.</p>
                           </div>
                           <!-- /Testimonial Text -->
 
                           <!-- Testimonial author information -->
                           <div class="testimonial-author-info">
-                            <h5 class="testimonial-author">Billy Adams</h5>
-                            <p class="testimonial-firm">Rolling Thunder</p>
+                            <h5 class="testimonial-author">Proverbs 18:15</h5>
+                            <p class="testimonial-firm">Bible</p>
                           </div>
                           <!-- /Testimonial author information -->
 
@@ -283,63 +310,28 @@
                         <!-- /Testimonial Content -->
                       </div>
                       <!-- End of Testimonial 1 -->
-
-                      <!-- Testimonial 2 -->
-                      <div class="testimonial-item">
-                        <!-- Testimonial Content -->
-                        <div class="testimonial-content">
-                          <!-- Picture -->
-                          <div class="testimonial-picture">
-                            <img src="./img/testimonials/testimonial-2.jpg" alt="Gary Johnson"/>
-                          </div>
-                          <!-- /Picture -->
-
-                          <!-- Testimonial Text -->
-                          <div class="testimonial-text">
-                             <p>Nam tempor commodo mi id sodales. Aenean sit amet nibh nec sapien consequat porta a sit amet diam.</p>
-                          </div>
-                          <!-- /Testimonial Text -->
-
-                          <!-- Testimonial author information -->
-                          <div class="testimonial-author-info">
-                            <h5 class="testimonial-author">Gary Johnson</h5>
-                            <p class="testimonial-firm">Locost Accessories</p>
-                          </div>
-                          <!-- /Testimonial author information -->
-
-                          <div class="testimonial-icon">
-                            <i class="fa fa-quote-left"></i>
-                          </div>
-
-                           <div class="testimonial-icon-big">
-                            <i class="fa fa-quote-right"></i>
-                          </div>
-                        </div>
-                        <!-- /Testimonial Content -->
-                      </div>
-                      <!-- End of Testimonial 2 -->
-
                       <!-- End of Testimonial 3 -->
                       <div class="testimonial-item">
 
                         <!-- Testimonial Content -->
                         <div class="testimonial-content">
                           <!-- Picture -->
-                          <div class="testimonial-picture">
+                          <!-- <div class="testimonial-picture">
                             <img src="./img/testimonials/testimonial-3.jpg" alt="Daniel Pringle"/>
-                          </div>
+                          </div> -->
                           <!-- /Picture -->
 
                           <!-- Testimonial Text -->
                           <div class="testimonial-text">
-                            <p>Etiam pretium ipsum quis justo dictum accumsan. Phasellus egestas odio a velit scelerisque.</p>
+                            <p>"... the tester's contribution to the user's happiness is a priority in finding bugs.
+                            </p>
                           </div>
-                          <!-- /Testimonial Text -->
+                         <!-- /Testimonial Text -->
 
                           <!-- Testimonial author information -->
                           <div class="testimonial-author-info">
-                            <h5 class="testimonial-author">Daniel Pringle</h5>
-                            <p class="testimonial-firm">Sagebrush</p>
+                            <h5 class="testimonial-author">Roman Savin</h5>
+                            <p class="testimonial-firm">Testing.com</p>
                           </div>
                           <!-- /Testimonial author information -->
 
@@ -355,13 +347,49 @@
 
                       </div>
                       <!-- End of Testimonial 3 -->
+                      <!-- Testimonial 2 -->
+                      <div class="testimonial-item">
+                        <!-- Testimonial Content -->
+                        <div class="testimonial-content">
+                          <!-- Picture -->
+                          <!-- <div class="testimonial-picture">
+                            <img src="./img/testimonials/testimonial-2.png" alt="Cicero"/>
+                          </div> -->
+                          <!-- /Picture -->
+
+                          <!-- Testimonial Text -->
+                          <div class="testimonial-text">
+                             <p>No invention can become perfect all at once.</p>
+                          </div>
+                          <!-- /Testimonial Text -->
+
+                          <!-- Testimonial author information -->
+                          <div class="testimonial-author-info">
+                            <h5 class="testimonial-author">Cicero</h5>
+                            <p class="testimonial-firm">Roman philosopher</p>
+                          </div>
+                          <!-- /Testimonial author information -->
+
+                          <div class="testimonial-icon">
+                            <i class="fa fa-quote-left"></i>
+                          </div>
+
+                           <div class="testimonial-icon-big">
+                            <i class="fa fa-quote-right"></i>
+                          </div>
+                        </div>
+                        <!-- /Testimonial Content -->
+                      </div>
+                      <!-- End of Testimonial 2 -->
+
+
                     </div>
                     <!-- /Testimonials -->
 
                     <div class="p-40"></div>
 
                     <!-- Clients Slider -->
-                    <div class="block-title">
+                    <!-- <div class="block-title">
                       <h2>Clients</h2>
                     </div>
 
@@ -407,13 +435,13 @@
                           <img src="./img/clients/client-7.png" alt="WordPress">
                         </a>
                       </div>
-                    </div>
+                    </div> -->
                     <!-- /Clients Slider -->
 
-                    <div class="p-40"></div>
+                    <!-- <div class="p-40"></div>
 
                   </div>
-                </div>
+                </div> -->
 
                 <!-- Fun Facts -->
                 <div class="row">
@@ -427,9 +455,9 @@
                 <div class="row">
                   <div class="col-xs-12 col-sm-3">
                     <div class="lm-info-block gray-default">
-                      <i class="linecons linecons-heart"></i>
-                      <h4>Happy Clients</h4>
-                      <span class="lm-info-block-value">578</span>
+                      <i class="linecons linecons-study"></i>
+                      <h4>Years of Experience</h4>
+                      <span class="lm-info-block-value">~1</span>
                       <span class="lm-info-block-text"></span>
                     </div>
                   </div>
@@ -438,16 +466,56 @@
                     <div class="lm-info-block gray-default">
                       <i class="linecons linecons-clock"></i>
                       <h4>Working Hours</h4>
-                      <span class="lm-info-block-value">4,780</span>
+                      <span class="lm-info-block-value">374</span>
                       <span class="lm-info-block-text"></span>
                     </div>
                   </div>
 
                   <div class="col-xs-12 col-sm-3 ">
                     <div class="lm-info-block gray-default">
-                      <i class="linecons linecons-star"></i>
-                      <h4>Awards Won</h4>
-                      <span class="lm-info-block-value">15</span>
+                      <i class="linecons linecons-lab"></i>
+                      <h4>Bugs reported</h4>
+                      <span class="lm-info-block-value owl-carousel text-rotation">
+                        <div class="item">
+                          437
+                        </div>
+                        <div class="item">
+                          438
+                        </div>
+                        <div class="item">
+                          439
+                        </div>
+                        <div class="item">
+                          440
+                        </div>
+                        <div class="item">
+                          441
+                        </div>
+                        <div class="item">
+                          442
+                        </div>
+                        <div class="item">
+                          443
+                        </div>
+                        <div class="item">
+                          444
+                        </div>
+                        <div class="item">
+                          445
+                        </div>
+                        <div class="item">
+                          446
+                        </div>
+                        <div class="item">
+                          447
+                        </div>
+                        <div class="item">
+                          448
+                        </div>
+                        <div class="item">
+                          449
+                        </div>
+                      </span>
                       <span class="lm-info-block-text"></span>
                     </div>
                   </div>
@@ -456,7 +524,51 @@
                     <div class="lm-info-block gray-default">
                       <i class="linecons linecons-cup"></i>
                       <h4>Coffee Consumed</h4>
-                      <span class="lm-info-block-value">1,286</span>
+
+                      <span class="lm-info-block-value owl-carousel text-rotation">
+                        <div class="item">
+                          551
+                        </div>
+                        <div class="item">
+                          552
+                        </div>
+                        <div class="item">
+                          553
+                        </div>
+                        <div class="item">
+                          554
+                        </div>
+                        <div class="item">
+                          555
+                        </div>
+                        <div class="item">
+                          556
+                        </div>
+                        <div class="item">
+                          557
+                        </div>
+                        <div class="item">
+                          558
+                        </div>
+                        <div class="item">
+                          559
+                        </div>
+                        <div class="item">
+                          560
+                        </div>
+                        <div class="item">
+                          561
+                        </div>
+                        <div class="item">
+                          562
+                        </div>
+                        <div class="item">
+                          563
+                        </div>
+                      </span>
+
+
+
                       <span class="lm-info-block-text"></span>
                     </div>
                   </div>
@@ -466,16 +578,16 @@
                 <div class="p-40"></div>
 
                 <!-- Pricing -->
-                <div class="row">
+                <!-- <div class="row">
                   <div class=" col-xs-12 col-sm-12 ">
                     <div class="block-title">
                       <h2>Pricing</h2>
                     </div>
                   </div>
 
-                </div>
+                </div> -->
 
-                <div class="row">
+                <!-- <div class="row">
                   <div class=" col-xs-12 col-sm-12 ">
                     <div class="fw-pricing clearfix row">
 
@@ -547,14 +659,14 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <!-- /Pricing -->
-              </div>
+              <!-- </div>
 
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- Footer -->
         <footer class="site-footer clearfix">
@@ -569,13 +681,13 @@
               </li>
 
               <li>
-                <a href="#" target="_blank">Instagram</a>
+                <a href="https://www.instagram.com/reboto.me/" target="_blank">Instagram</a>
               </li>
             </ul>
           </div>
 
           <div class="footer-copyrights">
-            <p>© 2020 All rights reserved. LMPixels.</p>
+            <p>© 2022 All rights reserved. Tom Rebo</p>
           </div>
         </footer>
         <!-- /Footer -->
