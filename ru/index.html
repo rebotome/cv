@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="ru" class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,28 +28,38 @@
     <link rel="stylesheet" href="css/main.css" type="text/css">
 
     <script src="/js/modernizr.custom.js"></script>
-    <script> (() => {
-      if (localStorage.getItem('isFirstVisit') === 'false') {
-          return
-      }
-      localStorage.setItem('isFirstVisit', 'false')
-      const getUserLanguage = () => {
-          const userLanguage = navigator.language.toLowerCase().split('-')[0]
-          if (['by', 'ua', 'ru'].includes(userLanguage)) {
-              return 'ru'
-          }
-          return 'en'
-      }
-      const userLanguage = getUserLanguage()
-      const pageLanguage = document.documentElement.lang
-      if (userLanguage !== pageLanguage) {
-          if (userLanguage === 'ru') {
-              window.location.replace('/ru')
-          } else {
-              window.location.replace('/')
-          }
-      }
-  })()</script>
+    <script>
+    if (localStorage.getItem('isFirstVisit') === 'false') {
+    return
+}
+localStorage.setItem('isFirstVisit', 'false')
+
+const alternateLinks = document.querySelectorAll(`link[rel=alternate]`)
+const supportedLangs = []
+for (const lang of alternateLinks) {
+    if (lang.getAttribute('hreflang')) {
+        supportedLangs.push(lang.getAttribute('hreflang'))
+    }
+}
+
+const getUserLanguage = () => {
+    const userLanguage = navigator.language.toLowerCase().split('-')[0]
+    if (supportedLangs.includes(userLanguage)) {
+        return userLanguage
+    }
+    return 'en'
+}
+
+const userLanguage = getUserLanguage()
+const pageLanguage = document.documentElement.lang
+if (userLanguage !== pageLanguage) {
+    for (const link of alternateLinks) {
+        if (link.getAttribute('hreflang') === userLanguage) {
+            location.href = link.href
+        }
+    }
+}
+    </script>
   </head>
 
   <body class="page">
