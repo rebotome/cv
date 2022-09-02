@@ -29,6 +29,7 @@
 
     <script src="/js/modernizr.custom.js"></script>
     <script>
+       ;(() => {
       if (localStorage.getItem('isFirstVisit') === 'false') {
       return
   }
@@ -58,7 +59,7 @@
               location.href = link.href
           }
       }
-  }
+  } })()
       </script>
   </head>
 
